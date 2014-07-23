@@ -17,7 +17,7 @@
 	<ul>
 		{% for movie in movies %}
 		<li>
-			<img src= "{{ movie.img }}" />
+			<img src= "http://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" />
 			<h3>{{ movie.title }}</h3>
 		</li>
 		{% endfor %}

@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from index import controller
+from index import controllers
 # Create your views here.
 def index(request):
-	movies = controller.getMovies()
+	movies = controllers.getMovies()
 	return render(request, "index.html", {"movies": movies})
 
 
