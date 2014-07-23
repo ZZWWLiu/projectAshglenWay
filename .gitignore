@@ -3,3 +3,4 @@ venv
 staticfiles
 Procfile
 *.txt
+.DS_Store
