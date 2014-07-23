@@ -1,17 +1,19 @@
-rtAPI_KEY = "8a6jr5tht3npp8u3m6tcktfk"
-rtBaseURL = "http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey="+rtAPI_KEY+"&page_limit=1&q="
+# rtAPI_KEY = "8a6jr5tht3npp8u3m6tcktfk"
+# rtBaseURL = "http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey="+rtAPI_KEY+"&page_limit=1&q="
+# tsm_apikey = "3x3ceywr4k4dy7npqrdvyd5t"
 
-tsm_apikey = "3x3ceywr4k4dy7npqrdvyd5t"
+# baseURL = "http://data.tmsapi.com/v1/movies/showings?"
+# http://data.tmsapi.com/v1/movies/showings?startDate=2014-07-21&zip=95133&api_key=3x3ceywr4k4dy7npqrdvyd5t
 
-baseURL = "http://data.tmsapi.com/v1/movies/showings?"
+
 
 moviefile = "movies.json"
 moviefile2 = "movies2.json"
 
-# http://data.tmsapi.com/v1/movies/showings?startDate=2014-07-21&zip=95133&api_key=3x3ceywr4k4dy7npqrdvyd5t
 from datetime import datetime
 import urllib2, json, os, time
 import pprint
+from urllib2 import Request, urlopen
 
 def readJSON(filename):
     """
@@ -67,13 +69,19 @@ if __name__ == '__main__':
 	# savefile(moviefile, data)
 
 	# read data(get title, img src, description, rating, genre...), and pass it to views
-	movies = readJSON(moviefile)
-	for movie in movies:
-		# print rtBaseURL+movie["title"]
-		imgUrl = getImageUrl(rtBaseURL ,movie["title"])
-		print movie["title"]
-		print imgUrl
-		time.sleep(0.2)
-		movie["img"] = imgUrl
-		pprint.pprint(movie)
-	savefile(moviefile2, movies)
+	# movies = readJSON(moviefile)
+	# for movie in movies:
+	# 	# print rtBaseURL+movie["title"]
+	# 	imgUrl = getImageUrl(rtBaseURL ,movie["title"])
+	# 	print movie["title"]
+	# 	print imgUrl
+	# 	time.sleep(0.2)
+	# 	movie["img"] = imgUrl
+	# 	pprint.pprint(movie)
+	# savefile(moviefile2, movies)
+	request = Request('https://themoviedb.apiary-mock.com/3/movie/now_playing?api_key=c8181ac4ae7e7ec434da410e40b8ef12')
+	response_body = urlopen(request).read()
+	print response_body
+
+
+

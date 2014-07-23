@@ -23,10 +23,14 @@ ul li {
 }
 ul li img {
 	display: block;
+	width: 180px;
+	height: 266px;
 }
 a {
 	text-decoration: none;
 }
+
+
 /** Start Coding Here **/
 #overlay {
 	background: rgba(0,0,0,0.7);
