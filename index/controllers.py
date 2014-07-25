@@ -10,6 +10,31 @@ search_url = "http://api.themoviedb.org/3/search/movie"
 # filename
 moviefile = "movies.json"
 
+
+
+def get_now_playing_movies():
+	url = now_playing_url+'?api_key='+tmdb_api_key
+	headers = {
+		'Accept': 'application/json'
+	}
+	request = Request(url, headers = headers)
+	response_body = urlopen(request).read()
+	data = json.loads(response_body)
+	return data["results"]
+
+def get_search_res(query):
+    moviename = quote(query)
+    url = search_url+'?api_key='+tmdb_api_key+'&query='+moviename
+    req = urllib2.Request(url)
+    response = urllib2.urlopen(req)
+    the_page = response.read()
+    result = json.loads(the_page)
+    return result["results"]
+
+'''
+   for test use functions
+'''
+
 def readJSON(filename):
     """
     Used to read all data from the json file.
@@ -34,25 +59,6 @@ def getMovies():
 	filename = os.path.join(module_dir, moviefile)
 	data = readJSON(filename)
 	return data
-
-def get_now_playing_movies():
-	url = now_playing_url+'?api_key='+tmdb_api_key
-	headers = {
-		'Accept': 'application/json'
-	}
-	request = Request(url, headers = headers)
-	response_body = urlopen(request).read()
-	data = json.loads(response_body)
-	return data["results"]
-
-def get_search_res(query):
-    moviename = quote(query)
-    url = search_url+'?api_key='+tmdb_api_key+'&query='+moviename
-    req = urllib2.Request(url)
-    response = urllib2.urlopen(req)
-    the_page = response.read()
-    result = json.loads(the_page)
-    return result["results"]
 
 if __name__ == '__main__':
 	# data = get_now_playing_movies()
