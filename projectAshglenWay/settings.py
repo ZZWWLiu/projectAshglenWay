@@ -42,7 +42,6 @@ INSTALLED_APPS = (
 #<<<<<<< HEAD
     'signup',
 #=======
-#>>>>>>> 099d519d8c270db39baea360c01c46673e30efd7
 )
 
 MIDDLEWARE_CLASSES = (
@@ -52,6 +51,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #'django.middleware.csrf.CsrfResponseMiddleware',
+
 )
 
 ROOT_URLCONF = 'projectAshglenWay.urls'

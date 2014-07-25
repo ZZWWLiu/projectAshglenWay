@@ -2,7 +2,7 @@
 {% load staticfiles %}
 <html>
 <head>
-		<title>Sign Up Form</title>
+		<title>Sign In Form</title>
 		<link rel = "stylesheet" href="{% static 'signup/css/style.css' %}" type ="text/css" media = "screen" title = "no title"
 		charset = "utf-8">
 </head>
@@ -25,18 +25,10 @@
 		<p>
 			<label for = "password">Password</label>
 			<input id = "password" name = "password" type = "password">
-			<span>Enter a password longer than 8 characters</span>
 		</p>
 		<p>
-			<label for= "confirm_password">Confirm Password</label>
-			<input id="confirm_password" name="confirm_password" type = "password">
-			<span>This is different with your password</span>
-		</p>
-		<p>
-			<input type = "submit" value = "Sign Up" id = "submit">
+			<input type = "submit" value = "Sign In" id = "submit">
 		</p>
 	</form>
-	<script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="{% static 'signup/js/app.js' %}" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>
