@@ -6,3 +6,5 @@ def index(request):
 	return render(request, "index.html", {"movies": movies})
 
 
+def search(request):
+	return render(request, "hello world")
