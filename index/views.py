@@ -7,4 +7,6 @@ def index(request):
 
 
 def search(request):
-	return render(request, "hello world")
+	query = request.POST.get('query')
+	search_res = controllers.get_search_res(query)
+	return render(request, "search_res.html", {"search_res":search_res})

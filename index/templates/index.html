@@ -11,9 +11,13 @@
 		<a href="/signup"><span>sign up</span></a>
 		<a href="/"><span>sign in</span></a>
 	</div>
-
-	<input>
-	<button>search</button>
+	
+	<form id="searchForm" method="post" action="/movies/search/">
+	{% csrf_token %}
+		<input id="query" type="text" name="query" value="{{query}}">            
+    	<input type="submit" value="Search" id="Search" class="float-left submit-button" >
+    </form>
+    	
 	<ul>
 		{% for movie in movies %}
 		<li>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	<title>search result</title>
+	<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="screen" title="no title" charset="utf-8">
+</head>
+<body>
+	<h1>Search Results</h1>
+    	
+	<ul>
+		{% for res in search_res %}
+		<li>
+			<h3>{{ res.title }}</h3>
+			<img src= "http://image.tmdb.org/t/p/w500/{{ res.poster_path }}" />
+		</li>
+		{% endfor %}
+	</ul>
+	
+</body>
+</html>
