@@ -21,6 +21,8 @@ $("#nowPlaying a").click(function( event ){
   //Get child/s alt attribute and set caption
   var captionText = $(this).children("img").attr("alt");
   $caption.text(captionText);
+  // change the css
+  $overlay.css("top", $("body").scrollTop());
   //Show the overlay
   $overlay.show();	
 });
