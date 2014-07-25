@@ -11,17 +11,24 @@
 		<a href="/logsystem/signup"><span>sign up</span></a>
 		<a href="/logsystem/signin"><span>sign in</span></a>
 	</div>
-
-	<input>
-	<button>search</button>
-	<ul>
+	
+	<form id="searchForm" method="post" action="/movies/search/">
+	{% csrf_token %}
+		<input id="query" type="text" name="query" value="{{query}}">            
+    	<input type="submit" value="Search" id="Search" class="float-left submit-button" >
+    </form>
+    	
+	<ul id="nowPlaying">
 		{% for movie in movies %}
-		<li>
-			<img src= "http://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" />
-			<h3>{{ movie.title }}</h3>
-		</li>
+		<a href="http://image.tmdb.org/t/p/w500/{{ movie.poster_path }}">
+			<li>
+				<img src= "http://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" />
+				<h3>{{ movie.title }}</h3>
+			</li>
+		</a>
 		{% endfor %}
 	</ul>
-	
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="{% static 'js/app.js' %}" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>
