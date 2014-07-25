@@ -1,4 +1,4 @@
-from urllib2 import Request, urlopen
+from urllib2 import Request, urlopen, quote
 import urllib2, json, os, time
 import pprint
 
@@ -6,6 +6,7 @@ import pprint
 # global varibles
 tmdb_api_key = "c8181ac4ae7e7ec434da410e40b8ef12"
 now_playing_url = "http://api.themoviedb.org/3/movie/now_playing"
+search_url = "http://api.themoviedb.org/3/search/movie"
 # filename
 moviefile = "movies.json"
 
@@ -44,6 +45,14 @@ def get_now_playing_movies():
 	data = json.loads(response_body)
 	return data["results"]
 
+def get_search_res(query):
+    moviename = quote(query)
+    url = search_url+'?api_key='+tmdb_api_key+'&query='+moviename
+    req = urllib2.Request(url)
+    response = urllib2.urlopen(req)
+    the_page = response.read()
+    result = json.loads(the_page)
+    return result["results"]
 
 if __name__ == '__main__':
 	# data = get_now_playing_movies()
