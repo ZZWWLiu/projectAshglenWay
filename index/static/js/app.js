@@ -22,7 +22,7 @@ $("#nowPlaying a").click(function( event ){
   var captionText = $(this).children("img").attr("alt");
   $caption.text(captionText);
   // change the css
-  $overlay.css("top", $("body").scrollTop());
+  $overlay.css("top", $(document).scrollTop());
   //Show the overlay
   $overlay.show();	
 });
