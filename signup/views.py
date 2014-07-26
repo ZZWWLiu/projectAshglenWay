@@ -6,17 +6,19 @@ from django.shortcuts import redirect
 from time import sleep
 from signup.models import User
 from django.http import HttpResponse
+from django.contrib import auth
+from django.contrib.auth.forms import UserCreationForm
 
 
 
 
 # Create your views here.
-def index(request):
+def register(request):
 	errors = []
 	if request.method == 'POST':
 		form = SignUpForm(request.POST)
 		if form.is_valid():
-			print dir(form)
+			#print dir(form)
 			cd = form.cleaned_data
 			username = cd['username']
 			password = cd['password']
@@ -33,6 +35,7 @@ def index(request):
 			if not errors:
 				user = User(username = username, password = password)
 				user.save()
+				request.session['username'] = user.username
 				return redirect('welcome')
 		else:
 				errors.append("You need to type in both your username and password!")
@@ -53,7 +56,7 @@ def signin(request):
 				errors.append("This username is not exist")
 			else:
 				if (u.password == password):
-					print "imhere"
+					request.session['username'] = username
 					return redirect('welcome')
 				else:
 					errors.append("Your password is not match with your username")
@@ -64,6 +67,15 @@ def signin(request):
 
 
 def welcome(request):
-	return render(request, 'welcome.html')
+	username = request.session['username']
+	return render(request, 'welcome.html', {'username':username})
 	#sleep(2)
 	#return redirect('/')
+
+
+def logout(request):
+	try:
+		del request.session['username']
+	except KeyError:
+		pass
+	return redirect('/movies')

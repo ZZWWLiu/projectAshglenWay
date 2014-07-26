@@ -7,9 +7,15 @@
 </head>
 <body>
 	<h1>Project Ashglen Way</h1>
-	<div id= "sign up/in">
-		<a href="/logsystem/signup"><span>sign up</span></a>
-		<a href="/logsystem/signin"><span>sign in</span></a>
+	<div class = "login-area">
+		{% if username %}
+			{{username}}(<a class = "login-link" href = "/logsystem/logout"> logout </a>)
+
+		{% else %}
+			<a class = "login-link" href = "/logsystem/signin">login</a>
+			|
+			<a class = "login-link" href = "/logsystem/signup">signup</a>
+		{% endif %}
 	</div>
 	
 	<form id="searchForm" method="post" action="/movies/search/">

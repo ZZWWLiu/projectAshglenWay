@@ -3,7 +3,12 @@ from index import controllers
 # Create your views here.
 def index(request):
 	movies = controllers.get_now_playing_movies()
-	return render(request, "index.html", {"movies": movies})
+	try:
+		username = request.session['username']
+	except KeyError:
+		return render(request, "index.html", {"movies": movies})
+	else:
+		return render(request, "index.html", {"movies": movies, "username": username})
 
 
 def search(request):
