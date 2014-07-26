@@ -3,6 +3,7 @@
 <html>
 <head>
 	<title>Project Ashglen Way</title>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="screen" title="no title" charset="utf-8">
 </head>
 <body>
@@ -13,25 +14,40 @@
 
 		{% else %}
 			<a class = "login-link" href = "/logsystem/signin">login</a>
-			|
+			
 			<a class = "login-link" href = "/logsystem/signup">signup</a>
 		{% endif %}
 	</div>
 	
 	<form id="searchForm" method="post" action="/movies/search/">
 	{% csrf_token %}
-		<input id="query" type="text" name="query" value="{{query}}">            
-    	<input type="submit" value="Search" id="Search" class="float-left submit-button" >
+		<div class = "row">
+			<div class="col-lg-2"></div>
+			<div class="col-lg-8">
+				<div class="input-group input-group-lg">
+					<input class="form-control" type="text" name="query" value="{{query}}" placeholder="Movie Name">
+					<span class="input-group-btn">
+        				<button class="btn btn-default" type="submit" value="Search">search</button>
+      				</span>            
+		    		
+		    	</div>
+    		</div>
+    	</div>
     </form>
     	
 	<ul id="nowPlaying">
 		{% for movie in movies %}
-		<a href="http://image.tmdb.org/t/p/w500/{{ movie.poster_path }}">
-			<li>
-				<img src= "http://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" />
-				<h3>{{ movie.title }}</h3>
-			</li>
-		</a>
+		<div class="col-lg-3">
+			<a href="http://image.tmdb.org/t/p/w500/{{ movie.poster_path }}">
+				<li>
+					<img src= "http://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" />
+					<p>{{ movie.title }}</p>
+				</li>
+			</a>
+			<button type="button" class="btn btn-warning btn-sm">
+	  			<span class="glyphicon glyphicon-star-empty"></span> Like
+			</button>
+		</div>
 		{% endfor %}
 	</ul>
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>

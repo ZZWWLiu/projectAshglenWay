@@ -11,7 +11,7 @@
 	<ul>
 		{% for res in search_res %}
 		<li>
-			<h3>{{ res.title }}</h3>
+			<p>{{ res.title }}</p>
 			<img src= "http://image.tmdb.org/t/p/w500/{{ res.poster_path }}" />
 		</li>
 		{% endfor %}
