@@ -1,6 +1,7 @@
 from urllib2 import Request, urlopen, quote
 import urllib2, json, os, time
 import pprint
+from signup.models import User
 
 
 # global varibles
@@ -59,6 +60,12 @@ def getMovies():
 	filename = os.path.join(module_dir, moviefile)
 	data = readJSON(filename)
 	return data
+
+def collection(request, username, movie):
+	user = User.object.get(username = username)
+	user.collection.add(movie)
+
+
 
 if __name__ == '__main__':
 	# data = get_now_playing_movies()
