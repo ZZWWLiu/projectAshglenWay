@@ -8,36 +8,43 @@
 	</head>
 
 	<body>
-		<h1>Project Ashglen Way</h1>
+<!-- login bar -->
+    <nav class = "navbar navbar-inverse navbar-fixed-top" role = "login">
+    	<div class = "container-fluid">
+    		<!-- search bar -->
+    		<p class="navbar-text">Project Ashglen Way</p>
+			<form class = "navbar-form navbar-left navbar-input-group" role = "search" id="searchForm" method="post" action="/movies/search/">
+			{% csrf_token %}		
+				<div class="form-group">
+					<input class="form-control" type="text" name="query" value="{{query}}" placeholder="Movie Name">
+				</div>
+       					<button class="btn btn-primary" type="submit" value="Search">search</button>          		    		 				
+    		</form>
+			<!-- end search bar -->
 
-		<div class = "login-area">
-			{% if username %}
-				{{username}}(<a class = "login-link" href = "/logsystem/logout"> logout </a>)
+    		{% if username %}
+    			<form class ="navbar-form navbar-right" role = "log out">
+    				<p class="navbar-text">{{username}}</p>
+	    			<a href = "/logsystem/logout/" class = "btn btn-primary navbar-btn" role = "button">Log out</a>
+	    		</form>
+    		
+    		{% else %}
+    			<form method = "post" action = "/logsystem/signin/" role = "login" class = "navbar-form navbar-right">
+    			{% csrf_token %}
+    				<div class = "form-group">
+    					<input  name = "username" type ="text" class = "form-control" placeholder = "Username">
+    					<input  name = "password" type ="password" class = "form-control" placeholder = "Password">
+    				</div>
+    				<button type = "submit" class = "btn btn-primary navbar-btn">Sign In</button>
+    				<a href = "/logsystem/signup/" class = "btn btn-primary navbar-btn" role = "button">Sign Up</a>
+    			</form>	
+    		{% endif %}
+    	</div>
 
-			{% else %}
-				<a class = "login-link" href = "/logsystem/signin">login</a>
-			
-				<a class = "login-link" href = "/logsystem/signup">signup</a>
-			{% endif %}
-		</div>
+    </nav>
+<!-- end login bar -->
 
 
-		<form id="searchForm" method="post" action="/movies/search/">
-		{% csrf_token %}
-			<div class = "row">
-				<div class="col-lg-2"></div>
-				<div class="col-lg-8">
-					<div class="input-group input-group-lg">
-						<input class="form-control" type="text" name="query" value="{{query}}" placeholder="Movie Name">
-						<span class="input-group-btn">
-        					<button class="btn btn-default" type="submit" value="Search">search</button>
-      					</span>            
-		    		
-		    		</div>
-    			</div>
-    		</div>
-    	</form>
-    	
 		{% block content %}
 		{% endblock %}
 	</body>
