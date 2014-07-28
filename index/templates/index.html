@@ -44,13 +44,17 @@
 					<p>{{ movie.title }}</p>
 				</li>
 			</a>
-			<button type="button" class="btn btn-warning btn-sm">
-	  			<span class="glyphicon glyphicon-star-empty"></span> Like
-			</button>
+			<div>
+				
+				<button name="Like" type="buttton" class="btn btn-warning btn-sm" value="{{ movie.title }}">
+		  			<span class="glyphicon glyphicon-star-empty" value="{{ movie.title }}">Like</span>
+				</button>
+			</div>
 		</div>
 		{% endfor %}
 	</ul>
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="{% static 'js/app.js' %}" type="text/javascript" charset="utf-8"></script>
+	<script src="{% static 'js/likeButton.js' %}" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>
