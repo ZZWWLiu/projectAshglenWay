@@ -4,7 +4,7 @@ APIs used in this project:
 
 TODO:
   
-  - add search block
+  - add like movie and comment movie function
   
   
 

@@ -11,7 +11,13 @@ search_url = "http://api.themoviedb.org/3/search/movie"
 # filename
 moviefile = "movies.json"
 
-
+def addMovieForUser(username, movie):
+	'''
+	TODO:
+			if already liked this movie, unlike it (delete it from the db)
+	'''
+	user = User.object.get(username = username)
+	user.collection.add(movie)
 
 def get_now_playing_movies():
 	url = now_playing_url+'?api_key='+tmdb_api_key
@@ -61,9 +67,7 @@ def getMovies():
 	data = readJSON(filename)
 	return data
 
-def collection(request, username, movie):
-	user = User.object.get(username = username)
-	user.collection.add(movie)
+
 
 
 
