@@ -38,17 +38,19 @@
 	<ul id="nowPlaying">
 		{% for movie in movies %}
 		<div class="col-lg-3">
-			<a href="http://image.tmdb.org/t/p/w500/{{ movie.poster_path }}">
-				<li>
-					<img src= "http://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" />
-					<p>{{ movie.title }}</p>
-				</li>
-			</a>
-			<div>
+			<div class="movie">
 				
-				<button name="Like" type="buttton" class="btn btn-warning btn-sm" value="{{ movie.title }}">
+				<li>
+					<a href="http://image.tmdb.org/t/p/w500/{{ movie.poster_path }}">
+						<img src= "http://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" />
+						<p>{{ movie.title }}</p>
+					</a>
+
+					<button name="Like" type="buttton" class="btn btn-warning btn-sm" value="{{ movie.title }}">
 		  			<span class="glyphicon glyphicon-star-empty" value="{{ movie.title }}">Like</span>
 				</button>
+				</li>
+				
 			</div>
 		</div>
 		{% endfor %}

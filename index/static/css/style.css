@@ -17,10 +17,10 @@ ul {
 }
 ul li {
 	display: inline-block;
-	padding: 8px;
+	padding: 10px;
 	background: black;
 	margin:10px;
-	min-height: 340px;
+	min-height: 380px;
 }
 ul li img {
 	display: block;
