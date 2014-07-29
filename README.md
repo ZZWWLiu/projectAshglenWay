@@ -4,7 +4,9 @@ APIs used in this project:
 
 TODO:
   
+  - display detailed movie info
   - add like movie and comment movie function
+  - add user app to view/edit user's collections and so on
   
   
 

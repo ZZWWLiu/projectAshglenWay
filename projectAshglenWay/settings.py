@@ -39,9 +39,8 @@ INSTALLED_APPS = (
     
     # created
     'index',
-#<<<<<<< HEAD
     'signup',
-#=======
+    'userProfile',
 )
 
 MIDDLEWARE_CLASSES = (
