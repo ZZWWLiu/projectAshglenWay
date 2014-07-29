@@ -1,6 +1,7 @@
 body {
 	font-family: sans-serif;
 	background: #384047;
+	padding-top: 70px;
 }
 h1 {
 	color: #fff;
@@ -77,3 +78,25 @@ ul p {
 #overlay p {
 	color: white;
 }
+
+#logout {
+	margin-left: 15px;
+}
+
+.navbar-input-group {
+  font-size: 0px; /*removes whitespace between button and input*/
+}
+
+.navbar-input-group input {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  margin-top: 8px;
+  margin-left
+}
+.navbar-input-group .btn {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-left: 0px;
+  margin-top: 8px;
+}
+

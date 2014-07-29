@@ -17,8 +17,9 @@ def register(request):
 	errors = []
 	if request.method == 'POST':
 		form = SignUpForm(request.POST)
+		print dir(form)
 		if form.is_valid():
-			#print dir(form)
+			
 			cd = form.cleaned_data
 			username = cd['username']
 			password = cd['password']
