@@ -12,5 +12,4 @@ def collectedMovie(request):
 		return redirect("/signin")
 	else:
 		movies = controllers.get_collected_movies(username)
-		print movies
 		return render(request, "profile.html", {"movies": movies})

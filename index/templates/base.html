@@ -23,8 +23,8 @@
 			<!-- end search bar -->
 
     		{% if username %}
-                <div class="nav navbar-nav navbar-right">
-                    <a href="/user_profile">Collections<span class="badge">3</span></a>
+                <div id="collections" class="nav navbar-nav navbar-right">
+                    <a href="/user_profile">Collections<span class="badge">{{ likedMovies|length }}</span></a>
                 </div>
     			<form class ="navbar-form navbar-right" role = "log out">
     				<p class="navbar-text">{{username}}</p>
