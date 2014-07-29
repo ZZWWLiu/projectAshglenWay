@@ -2,6 +2,7 @@ from urllib2 import Request, urlopen, quote
 import urllib2, json, os, time
 import pprint
 from signup.models import User
+from index.models import Movie, Comment
 
 
 # global varibles
@@ -11,13 +12,28 @@ search_url = "http://api.themoviedb.org/3/search/movie"
 # filename
 moviefile = "movies.json"
 
-def addMovieForUser(username, movie):
+def addMovieForUser(username, movieName):
 	'''
 	TODO:
 			if already liked this movie, unlike it (delete it from the db)
 	'''
-	user = User.object.get(username = username)
-	user.collection.add(movie)
+	user = User.objects.get(username = username)
+	print user
+	try:
+		movie = Movie.objects.get(title=movieName)
+	except Exception, e:
+		movie = Movie(title=movieName)
+		movie.save()
+
+	try:
+		m = user.collections.get(title=movie.title)
+	except Exception, e:
+		# movie not in the collect, so add to it
+		user.collections.add(movie)
+	else:
+		# movie already in the collect, so exclude from it
+		user.collections.remove(movie)
+	
 
 def get_now_playing_movies():
 	url = now_playing_url+'?api_key='+tmdb_api_key
