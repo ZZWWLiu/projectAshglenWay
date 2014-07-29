@@ -19,3 +19,7 @@ def search(request):
 	query = request.POST.get('query')
 	search_res = controllers.get_search_res(query)
 	return render(request, "search_res.html", {"search_res":search_res})
+
+def movie_info(request, id):
+	movie_info = controllers.get_movie_info_by_id(id)
+	return render(request, "movie_info.html", {"movie_info":movie_info})

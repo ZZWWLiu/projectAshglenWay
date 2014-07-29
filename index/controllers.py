@@ -43,6 +43,15 @@ def get_now_playing_movies():
 	data = json.loads(response_body)
 	return data["results"]
 
+def get_movie_info_by_id(id):
+	movie_id = id
+	url = 'https://api.themoviedb.org/3/movie/'+movie_id+'?api_key='+tmdb_api_key
+	req = urllib2.Request(url)
+	response = urllib2.urlopen(req)
+   	the_page = response.read()
+   	result = json.loads(the_page)
+	return result
+
 def get_search_res(query):
     moviename = quote(query)
     url = search_url+'?api_key='+tmdb_api_key+'&query='+moviename
