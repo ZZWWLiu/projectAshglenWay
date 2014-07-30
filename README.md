@@ -6,6 +6,8 @@ TODO:
 
   - add movie img url to database...
 
+  - add upcoming movies (nav tab) ??
+
   - display detailed movie info
     - fix the css for detailed movie info
 

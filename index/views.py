@@ -12,13 +12,17 @@ def index(request):
 			print "sorry you have to log in first"
 		return render(request, "index.html", {"movies": movies})
 	else:
-		likedMovies = userProfile.controllers.get_collected_movies(username)
-		likedMoviesTitle = []
-		for m in likedMovies:
-			likedMoviesTitle.append(m.title)
-		if movieName:
-			controllers.addMovieForUser(username, movieName)
-		return render(request, "index.html", {"movies": movies, "username": username, "likedMovies":likedMoviesTitle})
+		try:
+			likedMovies = userProfile.controllers.get_collected_movies(username)
+		except Exception, e:
+			return render(request, "index.html", {"movies": movies, "username": username, "likedMovies":[]})
+		else:
+			likedMoviesTitle = []
+			for m in likedMovies:
+				likedMoviesTitle.append(m.title)
+			if movieName:
+				controllers.addMovieForUser(username, movieName)
+			return render(request, "index.html", {"movies": movies, "username": username, "likedMovies":likedMoviesTitle})
 
 
 def search(request):
