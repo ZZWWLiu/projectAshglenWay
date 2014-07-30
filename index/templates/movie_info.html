@@ -4,9 +4,10 @@
 	<div id=""content"">
 		<div id="poster">
 			<img src= "http://image.tmdb.org/t/p/w500/{{ movie_info.poster_path }}" />
+			<button name="Like" type="buttton" class="btn btn-warning btn-sm" value="{{ res.title }}">
+		  	<span class="glyphicon glyphicon-star-empty" value="{{ res.title }}">Like</span>
+			</button>
 		</div>
-
-
 		<div id="title">
 			<h4>Title</h4>
 			<p>{{ movie_info.title }}</p>	
@@ -35,23 +36,21 @@
 			<h4>Overview</h4>
 			<p>{{movie_info.overview}}</p>
 		</div>		
-		<div>				
-			<button name="Like" type="buttton" class="btn btn-warning btn-sm" value="{{ res.title }}">
-		  		<span class="glyphicon glyphicon-star-empty" value="{{ res.title }}">Like</span>
-			</button>
-		</div>
 	</div>
-	<div>
-			{% for comment in comments %}
-				<li>{{comment.content}}</li>
-				<li>{{comment.username}}</li>
-				<li>{{comment.created_time}}</li>
-
-			{% endfor %}
-
-	</div>
-	{% if username %}
 	<div class = "col-lg-8">
+		<div class = "panel panel-info">
+			<div class = "panel-heading"> <h3>Comments</h3> <div>
+			<div class = "panel-body">
+				{% for comment in comments %}
+				<div class = "panel panel-warning">
+					<div class = "panel-heading">{{comment.username}} posted at {{comment.created_time}}</div>
+					<div class = "panel-body">
+						<p>{{comment.content}}</p>
+					</div>
+				</div>
+				{% endfor %}
+			<div>
+	{% if username %}
 		<form method = "post" role = "form">
 		{% csrf_token %}
 			<div class = "form-group">

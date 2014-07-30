@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+	<head>
+		<title>Project Ashglen Way</title>
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="screen" title="no title" charset="utf-8">
+        <link rel = "stylesheet" href="{% static 'signup/css/style.css' %}" type ="text/css" media = "screen" title = "no title"
+        charset = "utf-8">
+	</head>
+
+	<body>
+<!-- login bar -->
+    <nav class = "navbar navbar-inverse navbar-fixed-top" role = "login">
+    	<div class = "container-fluid">
+    		<!-- search bar -->
+    		<p class="navbar-text">Project Ashglen Way</p>
+			<form class = "navbar-form navbar-left navbar-input-group" role = "search" id="searchForm" method="post" action="/movies/search/">
+			{% csrf_token %}		
+				<div class="form-group">
+					<input class="form-control" type="text" name="query" value="{{query}}" placeholder="Movie Name">
+				</div>
+       					<button class="btn btn-primary" type="submit" value="Search">search</button>          		    		 				
+    		</form>
+			<!-- end search bar -->
+
+    		{% if username %}
+                <div id="collections" class="nav navbar-nav navbar-right">
+                    <a href="/user_profile">Collections<span class="badge">{{ likedMovies|length }}</span></a>
+                </div>
+    			<form class ="navbar-form navbar-right" role = "log out">
+    				<p class="navbar-text">{{username}}</p>
+	    			<a href = "/logsystem/logout/" class = "btn btn-primary navbar-btn" role = "button">Log out</a>
+	    		</form>
+    		
+    		{% else %}
+    			<form method = "post" action = "/logsystem/signin/" role = "login" class = "navbar-form navbar-right">
+    			{% csrf_token %}
+    				<div class = "form-group">
+    					<input  name = "username" type ="text" class = "form-control" placeholder = "Username">
+    					<input  name = "password" type ="password" class = "form-control" placeholder = "Password">
+    				</div>
+    				<button type = "submit" class = "btn btn-primary navbar-btn">Sign In</button>
+    				<a href = "/logsystem/signup/" class = "btn btn-primary navbar-btn" role = "button">Sign Up</a>
+    			</form>	
+    		{% endif %}
+    	</div>
+
+    </nav>
+<!-- end login bar -->
+
+
+		{% block content %}
+		{% endblock %}
+	</body>
+</html>

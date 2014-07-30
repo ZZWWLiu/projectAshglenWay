@@ -82,3 +82,22 @@ input[type="submit"] {
   text-shadow: 0 1px #68B25B;
 
 }
+
+.button {
+  background: #2F558E;
+  box-shadow: 0 3px 0 0 #1D3C6A;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 2em;
+  line-height: 1.6em;
+  margin: 2em 0 0;
+  outline: none;
+  padding: .8em 0;
+  text-shadow: 0 1px #68B25B;
+  text-decoration: none;
+  text-align: center;
+
+}
