@@ -1,1 +1,1 @@
-web: gunicorn projectAshglenWay.wsgi --log-file -
+web: gunicorn projectAshglenWay.wsgi 
