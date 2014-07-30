@@ -14,11 +14,9 @@ moviefile = "movies.json"
 
 def addMovieForUser(username, movieName):
 	'''
-	TODO:
-			if already liked this movie, unlike it (delete it from the db)
+		if already liked this movie, unlike it (delete it from the db)
 	'''
 	user = User.objects.get(username = username)
-	print user
 	try:
 		movie = Movie.objects.get(title=movieName)
 	except Exception, e:

@@ -1,19 +1,24 @@
 from django.shortcuts import render
 from index import controllers
-from index import models
+import userProfile
 # Create your views here.
 def index(request):
 	movies = controllers.get_now_playing_movies()
+	movieName = request.GET.get('movie')
 	try:
 		username = request.session['username']
 	except KeyError:
+		if movieName:
+			print "sorry you have to log in first"
 		return render(request, "index.html", {"movies": movies})
 	else:
-		movieName = request.GET.get('movie')
+		likedMovies = userProfile.controllers.get_collected_movies(username)
+		likedMoviesTitle = []
+		for m in likedMovies:
+			likedMoviesTitle.append(m.title)
 		if movieName:
-			print movieName
 			controllers.addMovieForUser(username, movieName)
-		return render(request, "index.html", {"movies": movies, "username": username})
+		return render(request, "index.html", {"movies": movies, "username": username, "likedMovies":likedMoviesTitle})
 
 
 def search(request):

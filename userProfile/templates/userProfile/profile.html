@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block content %}
+<html>
+	<body>
+		<ul>
+			{% for movie in movies %}
+				<li>
+					
+						<p>{{ movie.title }}</p>
+
+					<button name="Like" type="buttton" class="btn btn-warning btn-sm" value="{{ movie.title }}">
+		  			<span class="glyphicon glyphicon-star-empty" value="{{ movie.title }}">Like</span>
+					</button>
+				</li>
+			{% endfor %}
+		</ul>
+	</body>
+</html>
+
+{% endblock %}

@@ -1,36 +1,46 @@
 {% extends "base.html" %}
 {% block content %}
-{% load staticfiles %}
-	<h1>{{ movie_info.title }}</h1>
-	
-	<ul id="nowPlaying">
-		<div class="col-lg-3">
-			<a  href="http://image.tmdb.org/t/p/w500/{{ movie_info.poster_path }}">
-				<li>
-					<img src= "http://image.tmdb.org/t/p/w500/{{ movie_info.poster_path }}" />
-					<h4>Genre</h4>
-					{% for genre in movie_info.genres %}
-						<p>{{genre.name}}</p>
-					{% endfor %}
-					<h4>Country</h4>
-					{% for country in movie_info.production_countries %}
-						<p>{{country.name}}</p>
-					{% endfor %}
-					<h4>Year</h4>
-					<p>{{movie_info.release_date}}</p>
-					<h4>Length</h4>
-					<p>{{movie_info.runtime}} mins</p>
-					<h4>Overview</h4>
-					<p>{{movie_info.overview}}</p>
-				</li>
-			</a>
-			<div>				
-				<button name="Like" type="buttton" class="btn btn-warning btn-sm" value="{{ res.title }}">
-		  			<span class="glyphicon glyphicon-star-empty" value="{{ res.title }}">Like</span>
-				</button>
-			</div>
+{% load staticfiles %}	
+	<div id=""content"">
+		<div id="poster">
+			<img src= "http://image.tmdb.org/t/p/w500/{{ movie_info.poster_path }}" />
 		</div>
-	</ul>
+
+
+		<div id="title">
+			<h4>Title</h4>
+			<p>{{ movie_info.title }}</p>	
+		</div>
+		<div id="genre">
+			<h4>Genre</h4>
+			{% for genre in movie_info.genres %}
+				<p>{{genre.name}}</p>
+			{% endfor %}
+		</div>
+		<div id="country">
+			<h4>Country</h4>
+			{% for country in movie_info.production_countries %}
+				<p>{{country.name}}</p>
+			{% endfor %}
+		</div>
+		<div id="year">
+			<h4>Year</h4>
+			<p>{{movie_info.release_date}}</p>
+		</div>
+		<div id ="length">
+			<h4>Length</h4>
+			<p>{{movie_info.runtime}} mins</p>
+		</div>
+		<div id="overview">
+			<h4>Overview</h4>
+			<p>{{movie_info.overview}}</p>
+		</div>		
+		<div>				
+			<button name="Like" type="buttton" class="btn btn-warning btn-sm" value="{{ res.title }}">
+		  		<span class="glyphicon glyphicon-star-empty" value="{{ res.title }}">Like</span>
+			</button>
+		</div>
+	</div>
 	<div>
 			{% for comment in comments %}
 				<li>{{comment.content}}</li>

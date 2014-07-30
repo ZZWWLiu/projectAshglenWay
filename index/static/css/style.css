@@ -100,3 +100,28 @@ ul p {
   margin-top: 8px;
 }
 
+/*css for movie_info.html*/
+#content {
+    width: 200px;
+    border: 4px solid red;
+    padding: 10px;
+    overflow: hidden;
+}
+#poster{
+	float: left;
+	width: 400px;
+    height: 540px;
+	margin-left: 15px;
+}
+#poster img{
+	width: 87%;
+ 	height: auto;
+}
+
+#title, #genre, #country, #year, #length, #overview{
+	color: white;
+}
+
+#title h4, #genre h4, #country h4, #year h4, #length h4, #overview h4{
+	color: blue;
+}
