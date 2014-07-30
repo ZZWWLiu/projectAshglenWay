@@ -1,8 +1,6 @@
 from django.db import models
-
-
 from django import forms
-from index.models import Movies
+from index.models import Movie
 
 
 class SignUpForm(forms.Form):
@@ -18,6 +16,9 @@ class SignInForm(forms.Form):
 class User(models.Model):
 	username = models.CharField(max_length = 20)
 	password = models.CharField(max_length = 20)
-	collections = models.ManyToManyField(Movies)
+	collections = models.ManyToManyField(Movie)
+	
 	def __unicode__(self):
 		return self.username
+		
+
