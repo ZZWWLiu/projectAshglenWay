@@ -12,36 +12,39 @@
     <nav class = "navbar navbar-inverse navbar-fixed-top" role = "login">
     	<div class = "container-fluid">
     		<!-- search bar -->
-    		<a href="/movies"><p class="navbar-text">Project Ashglen Way</p></a>
+    		<a href="/movies"><p id="projectAW" class="navbar-text">Project Ashglen Way</p></a>
 			<form class = "navbar-form navbar-left navbar-input-group" role = "search" id="searchForm" method="post" action="/movies/search/">
 			{% csrf_token %}		
 				<div class="form-group">
 					<input class="form-control" type="text" name="query" value="{{query}}" placeholder="Movie Name">
+                    <button class="btn btn-primary" type="submit" value="Search">search</button> 
 				</div>
-       					<button class="btn btn-primary" type="submit" value="Search">search</button>          		    		 				
+       					         		    		 				
     		</form>
 			<!-- end search bar -->
-
+            
     		{% if username %}
-                <div id="collections" class="nav navbar-nav navbar-right">
-                    <a href="/user_profile">Collections<span class="badge">{{ likedMovies|length }}</span></a>
-                </div>
-    			<form class ="navbar-form navbar-right" role = "log out">
-    				<p class="navbar-text">{{username}}</p>
-	    			<a href = "/logsystem/logout/" class = "btn btn-primary navbar-btn" role = "button">Log out</a>
-	    		</form>
+            
+			<form class ="navbar-form navbar-right" role = "log out">
+				<p class="navbar-text">{{username}}</p>
+                <div id="collections" class="nav navbar-nav">
+                <a href="/user_profile" class="navbar-link"><span class="glyphicon glyphicon-heart"></span> Collections</a><span class="badge">{{ likedMovies|length }}</span>
+            </div>
+
+    			<a href = "/logsystem/logout/" class = "btn btn-primary navbar-btn" role = "button">Log out</a>
+    		</form>
     		
     		{% else %}
     			<form method = "post" action = "/logsystem/signin/" role = "login" class = "navbar-form navbar-right">
     			{% csrf_token %}
-    				<div class = "form-group">
     					<input  name = "username" type ="text" class = "form-control" placeholder = "Username">
     					<input  name = "password" type ="password" class = "form-control" placeholder = "Password">
-    				</div>
+    				
     				<button type = "submit" class = "btn btn-primary navbar-btn">Sign In</button>
     				<a href = "/logsystem/signup/" class = "btn btn-primary navbar-btn" role = "button">Sign Up</a>
     			</form>	
     		{% endif %}
+        
     	</div>
 
     </nav>
