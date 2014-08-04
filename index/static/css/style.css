@@ -21,7 +21,7 @@ ul li {
 	padding: 10px;
 	background: black;
 	margin:10px;
-	min-height: 380px;
+	height: 350px;
 }
 ul li img {
 	display: block;
@@ -70,6 +70,19 @@ ul p {
 	text-align: center;;
 }
 
+li button {
+	position: absolute;
+	top: 20px;
+	left: 35px;
+}
+
+#logo {
+	position: absolute;
+	left: 10px;
+	height: 20px;
+	margin-top: 23px;
+}
+
 #overlay img {
 	margin-top: 5%;
 	height: 500px;
@@ -90,6 +103,7 @@ ul p {
 
 #projectAW {
 	margin-top: 23px;
+	margin-left: 35px;
 }
 
 .navbar-input-group {

@@ -2,7 +2,7 @@
 {% load staticfiles %}
 <html>
 	<head>
-		<title>Project Ashglen Way</title>
+		<title>Movie Fun</title>
 		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="screen" title="no title" charset="utf-8">
 	</head>
@@ -12,7 +12,7 @@
     <nav class = "navbar navbar-inverse navbar-fixed-top" role = "login">
     	<div class = "container-fluid">
     		<!-- search bar -->
-    		<a href="/movies"><p id="projectAW" class="navbar-text">Project Ashglen Way</p></a>
+    		<a href="/movies"><img id="logo" src="{% static 'img/logo.jpg' %}"><p id="projectAW" class="navbar-text">Movie Fun</p></a>
 			<form class = "navbar-form navbar-left navbar-input-group" role = "search" id="searchForm" method="post" action="/movies/search/">
 			{% csrf_token %}		
 				<div class="form-group">
