@@ -1,31 +1,50 @@
 {% extends "base.html" %}
 {% block content %}
 {% load staticfiles %}
-	<ul id="nowPlaying">
-		{% for movie in movies %}
-		<div class="col-lg-3">
-			<div class="movie">
-				
-				<li>
-					<a class="poster" href="http://image.tmdb.org/t/p/w500/{{ movie.poster_path }}">
-						<img src= "http://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" />
-						<p>{{ movie.title }}</p>
-					</a>
-					{% if movie.title in likedMovies %}
-					<button name="Like" type="buttton" class="btn btn-success btn-sm" value="{{ movie.title }}">
-		  			<span class="glyphicon glyphicon-star" value="{{ movie.title }}">Unlike</span>
-					</button>
-					{% else %}
-					<button name="Like" type="buttton" class="btn btn-warning btn-sm" value="{{ movie.title }}">
-		  			<span class="glyphicon glyphicon-star-empty" value="{{ movie.title }}">Like</span>
-					</button>
-					{% endif %}
-				</li>
-				
+
+<div class="container">
+	<!-- nav pills -->
+	<div class="col-md-2">
+		<div class="side-navbar">
+		    <ul class="nav nav-pills nav-stacked">
+		        <li class="active"><a href="">Now Playing</a></li>
+		        <li><a href="">Upcomming</a></li>
+		        <li><a href="">Most Popular</a></li>
+		        <li><a href="">Most Commented</a></li>
+		    </ul>
+	    </div>
+	</div>
+	<!-- end nav pills -->
+
+	<div class="col-md-9">
+		<ul id="nowPlaying">
+			{% for movie in movies %}
+			<div class="col-lg-3">
+				<div class="movie">
+					
+					<li class="movie-list">
+						<a class="poster" href="http://image.tmdb.org/t/p/w500/{{ movie.poster_path }}">
+							<img src= "http://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" />
+							<p>{{ movie.title }}</p>
+						</a>
+						{% if movie.title in likedMovies %}
+						<button name="Like" type="buttton" class="btn btn-success btn-sm" value="{{ movie.title }}">
+			  			<span class="glyphicon glyphicon-star" value="{{ movie.title }}">Unlike</span>
+						</button>
+						{% else %}
+						<button name="Like" type="buttton" class="btn btn-warning btn-sm" value="{{ movie.title }}">
+			  			<span class="glyphicon glyphicon-star-empty" value="{{ movie.title }}">Like</span>
+						</button>
+						{% endif %}
+					</li>
+					
+				</div>
 			</div>
-		</div>
-		{% endfor %}
-	</ul>
+			{% endfor %}
+		</ul>
+	</div>
+
+</div>
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="{% static 'js/app.js' %}" type="text/javascript" charset="utf-8"></script>
         <script src="{% static 'js/likeButton.js' %}" type="text/javascript" charset="utf-8"></script>

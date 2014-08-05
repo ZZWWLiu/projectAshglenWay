@@ -1,6 +1,6 @@
 body {
 	font-family: sans-serif;
-	background: #428bca;
+	background: rgba(89, 119, 146, 1);
 	padding-top: 70px;
 }
 h1 {
@@ -16,7 +16,7 @@ ul {
 	max-width: 780px;
 	text-align: center;
 }
-ul li {
+.movie-list {
 	display: inline-block;
 	padding: 10px;
 	background: black;
@@ -157,4 +157,16 @@ li button {
 
 #title h4, #genre h4, #country h4, #year h4, #length h4, #overview h4{
 	color: blue;
+}
+
+
+
+/*css for side navbar*/
+.side-navbar {
+	position: fixed;
+	top: 150px;
+}
+
+.nav-pills > li > a{
+	color: rgba(212, 212, 212, 1);
 }
