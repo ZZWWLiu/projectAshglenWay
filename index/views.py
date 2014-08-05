@@ -48,6 +48,10 @@ def search(request):
 				controllers.addMovieForUser(username, movieName)
 		return render(request, "search_res.html", {"search_res":search_res, "username": username, "likedMovies":likedMoviesTitle} )
 
+
+'''
+TODO: make like button work
+'''
 def movie_info(request, id):
 	comments = []
 	movie_info = controllers.get_movie_info_by_id(id)
