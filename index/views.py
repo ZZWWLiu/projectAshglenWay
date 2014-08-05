@@ -26,7 +26,32 @@ def index(request):
 				controllers.addMovieForUser(username, movieName)
 			return render(request, "index.html", {"movies": movies, "username": username, "likedMovies":likedMoviesTitle})
 
-# tuned collections part
+
+def upcoming(request):
+	movieName = request.GET.get('movie')
+	movies = controllers.get_now_playing_movies()
+	try:
+		username = request.session['username']
+	except KeyError:
+		# if movieName:
+		# 	print "sorry you have to log in first"
+		return render(request, "upcoming.html", {"movies": movies})
+	else:
+		try:
+			likedMovies = userProfile.controllers.get_collected_movies(username)
+		except Exception, e:
+			# no liked movies
+			return render(request, "upcoming.html", {"movies": movies, "username": username, "likedMovies":[]})
+		else:
+			likedMoviesTitle = []
+			for m in likedMovies:
+				likedMoviesTitle.append(m.title)
+			if movieName:
+				controllers.addMovieForUser(username, movieName)
+			return render(request, "upcoming.html", {"movies": movies, "username": username, "likedMovies":likedMoviesTitle})
+
+
+
 def search(request):
 	query = request.POST.get('query')
 	search_res = controllers.get_search_res(query)
