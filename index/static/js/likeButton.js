@@ -1,6 +1,6 @@
 var $button = $(".movie button");
 var clicked
-var $collections_badge = $("#collections .badge")
+var $collections_badge = $("#collections .badge");
 $button.click(function(event){
 	var movie = $(this).val();
 	clicked = $(this)
@@ -12,13 +12,13 @@ $button.click(function(event){
 		$span = clicked.children();
 		num = Number($collections_badge.text());
 		if($span.text() === "Like") {
-			clicked.attr("class", "btn btn-success btn-sm")
+			clicked.attr("class", "btn btn-success btn-sm");
 			$span.attr("class", "glyphicon glyphicon-star");
 			$span.text("Unlike");
 			// collection badge increase
 			num = num+1;
 		} else {
-			clicked.attr("class", "btn btn-warning btn-sm")
+			clicked.attr("class", "btn btn-warning btn-sm");
 			$span.attr("class", "glyphicon glyphicon-star-empty");
 			$span.text("Like");
 			// collection badge decrease

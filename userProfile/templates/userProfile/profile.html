@@ -1,26 +1,23 @@
-<!DOCTYPE html>
 {% extends "base.html" %}
+{% load staticfiles %}
 {% block content %}
-<html>
-	<body>
-		<ul>
-			{% for movie in movies %}
-			<div class="col-lg-3">
-				<div class="movie">
-					<li>
-						<a href="http://image.tmdb.org/t/p/w500/{{ movie.poster_path }}">
-							<img src= "http://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" />
-							<p>{{ movie.title }}</p>
-						</a>
-						
+<ul>
+	{% for movie in movies %}
+	<div class="col-lg-3">
+		<div class="liked-movie">
+			<li>
+				<a href="http://image.tmdb.org/t/p/w500/{{ movie.poster_path }}">
+					<img src= "http://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" />
+					<p>{{ movie.title }}</p>
+				</a>
+				
 
-						<button id="delete-button" type="buttton" class="btn btn-danger btn-sm" value="{{ movie.title }}"> delete</button>
-					</li>
-				</div>
-			</div>
-			{% endfor %}
-		</ul>
-	</body>
-</html>
-
+				<button type="buttton" class="btn btn-danger btn-sm" value="{{ movie.title }}"> delete</button>
+			</li>
+		</div>
+	</div>
+	{% endfor %}
+</ul>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="{% static 'js/deleteButton.js' %}" type="text/javascript" charset="utf-8"></script>
 {% endblock %}
