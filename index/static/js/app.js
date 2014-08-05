@@ -4,7 +4,7 @@
 var $overlay = $('<div id="overlay"></div>'); 
 var $image = $("<img>");
 var $caption = $("<p></p>");
-
+var $poster = $(".movie .poster");
 //An image
 $overlay.append($image);
 //A caption
@@ -13,7 +13,7 @@ $overlay.append($caption);
 $("body").append($overlay);
 
 //1. Capture the click event on a link to an image
-$("#nowPlaying a").click(function( event ){
+$poster.click(function( event ){
 	event.preventDefault();
   var href = $(this).attr("href");
   //update overlay with the image linked in the link

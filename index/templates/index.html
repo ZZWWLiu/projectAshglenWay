@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
-{% load staticfiles %}
+
 	<ul id="nowPlaying">
 		{% for movie in movies %}
 		<div class="col-lg-3">
 			<div class="movie">
 				
 				<li>
-					<a href="http://image.tmdb.org/t/p/w500/{{ movie.poster_path }}">
+					<a class="poster" href="http://image.tmdb.org/t/p/w500/{{ movie.poster_path }}">
 						<img src= "http://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" />
 						<p>{{ movie.title }}</p>
 					</a>

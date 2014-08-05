@@ -34,7 +34,7 @@ def search(request):
 	try:
 		username = request.session['username']
 	except KeyError:
-		return render(request, "search_res.html", {"search_res":search_res})
+		return render(request, "search_res.html", {"search_res":search_res, "likedMovies":[]})
 	else:
 		try:
 			likedMovies = userProfile.controllers.get_collected_movies(username)

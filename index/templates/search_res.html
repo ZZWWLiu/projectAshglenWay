@@ -1,22 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
+{% load staticfiles %}
 	<h1>Search Results</h1>
     	
-	<ul id="nowPlaying">
+	<ul>
 		{% for res in search_res %}
 		<div class="col-lg-3">
 			<div class="movie">
-				<a  href="http://image.tmdb.org/t/p/w500/{{ res.poster_path }}">
+				
 					<li>
-						<img src= "http://image.tmdb.org/t/p/w500/{{ res.poster_path }}" />
+						<a class="poster" href="http://image.tmdb.org/t/p/w500/{{ res.poster_path }}">
+							<img src= "http://image.tmdb.org/t/p/w500/{{ res.poster_path }}" />
+						</a>
+
 						<a href="/movies/id={{res.id}}">{{ res.title }}</a>
+						{% if movie.title in likedMovies %}
+							<button name="Like" type="buttton" class="btn btn-success btn-sm" value="{{ movie.title }}">
+				  			<span class="glyphicon glyphicon-star" value="{{ movie.title }}">Unlike</span>
+							</button>
+						{% else %}
+							<button name="Like" type="buttton" class="btn btn-warning btn-sm" value="{{ movie.title }}">
+				  			<span class="glyphicon glyphicon-star-empty" value="{{ movie.title }}">Like</span>
+							</button>
+						{% endif %}
 					</li>
-				</a>
-				<div>				
-					<button name="Like" type="buttton" class="btn btn-warning btn-sm" value="{{ res.title }}">
-			  			<span class="glyphicon glyphicon-star-empty" value="{{ res.title }}">Like</span>
-					</button>
-				</div>
+				
 			</div>
 		</div>
 		{% endfor %}
