@@ -39,6 +39,12 @@ ul p {
 }
 
 /** Start Coding Here **/
+#delete-button {
+	position: absolute;
+	left: 100px;
+	top: 320px;
+}
+
 .login-area {
     font-size: 13px;
     color: gray;

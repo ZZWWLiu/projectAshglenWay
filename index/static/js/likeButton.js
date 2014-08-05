@@ -1,11 +1,11 @@
-var $button = $("#nowPlaying button");
+var $button = $(".movie button");
 var clicked
 var $collections_badge = $("#collections .badge")
 $button.click(function(event){
 	var movie = $(this).val();
 	clicked = $(this)
 	$.ajax({
-		url:"/movies",
+		url:"",
 		data: {"movie": movie}
 	}).done(function () {
 		// console.log("liked movie: "+ movie);

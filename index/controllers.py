@@ -61,7 +61,9 @@ def get_now_playing_movies():
 	request = Request(url, headers = headers)
 	response_body = urlopen(request).read()
 	data = json.loads(response_body)
-	return data["results"]
+	results = data["results"]
+	saveMoviesToDB(results)
+	return results
 
 def get_movie_info_by_id(id):
 	movie_id = id
@@ -79,7 +81,20 @@ def get_search_res(query):
     response = urllib2.urlopen(req)
     the_page = response.read()
     result = json.loads(the_page)
-    return result["results"]
+    results = result["results"]
+    saveMoviesToDB(results)
+    return results
+
+def saveMoviesToDB(results):
+	for movie in results:
+		try:
+			m = Movie.objects.get(title=movie["title"])
+		except Exception, e:
+			# if not in db, save it
+			m = Movie(title=movie["title"], poster_path=movie["poster_path"])
+			m.save()
+
+
 
 '''
    for test use functions
@@ -109,8 +124,6 @@ def getMovies():
 	filename = os.path.join(module_dir, moviefile)
 	data = readJSON(filename)
 	return data
-
-
 
 
 

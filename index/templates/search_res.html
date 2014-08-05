@@ -5,16 +5,18 @@
 	<ul id="nowPlaying">
 		{% for res in search_res %}
 		<div class="col-lg-3">
-			<a  href="http://image.tmdb.org/t/p/w500/{{ res.poster_path }}">
-				<li>
-					<img src= "http://image.tmdb.org/t/p/w500/{{ res.poster_path }}" />
-					<a href="/movies/id={{res.id}}">{{ res.title }}</a>
-				</li>
-			</a>
-			<div>				
-				<button name="Like" type="buttton" class="btn btn-warning btn-sm" value="{{ res.title }}">
-		  			<span class="glyphicon glyphicon-star-empty" value="{{ res.title }}">Like</span>
-				</button>
+			<div class="movie">
+				<a  href="http://image.tmdb.org/t/p/w500/{{ res.poster_path }}">
+					<li>
+						<img src= "http://image.tmdb.org/t/p/w500/{{ res.poster_path }}" />
+						<a href="/movies/id={{res.id}}">{{ res.title }}</a>
+					</li>
+				</a>
+				<div>				
+					<button name="Like" type="buttton" class="btn btn-warning btn-sm" value="{{ res.title }}">
+			  			<span class="glyphicon glyphicon-star-empty" value="{{ res.title }}">Like</span>
+					</button>
+				</div>
 			</div>
 		</div>
 		{% endfor %}

@@ -5,14 +5,19 @@
 	<body>
 		<ul>
 			{% for movie in movies %}
-				<li>
-					
-						<p>{{ movie.title }}</p>
+			<div class="col-lg-3">
+				<div class="movie">
+					<li>
+						<a href="http://image.tmdb.org/t/p/w500/{{ movie.poster_path }}">
+							<img src= "http://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" />
+							<p>{{ movie.title }}</p>
+						</a>
+						
 
-					<button name="Like" type="buttton" class="btn btn-warning btn-sm" value="{{ movie.title }}">
-		  			<span class="glyphicon glyphicon-star-empty" value="{{ movie.title }}">Like</span>
-					</button>
-				</li>
+						<button id="delete-button" type="buttton" class="btn btn-danger btn-sm" value="{{ movie.title }}"> delete</button>
+					</li>
+				</div>
+			</div>
 			{% endfor %}
 		</ul>
 	</body>
